@@ -31,4 +31,5 @@ export default {
   height: calc(100% - 49px - 64px);
   overflow-y: scroll;
 }
+
 </style>

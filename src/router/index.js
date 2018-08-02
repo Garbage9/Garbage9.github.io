@@ -7,6 +7,7 @@ import Cinema from '@/pages/cinema'
 import Details from '@/pages/details'
 import Login from '@/pages/login'
 import Register from '@/pages/register'
+import Buy from '@/pages/buy'
 import store from '../store'
 
 Vue.use(Router)
@@ -72,6 +73,15 @@ export default new Router({
         component:Register,
         beforeEnter:(to,from,next)=>{
           store.commit('changeTitle','注册')
+          next()
+        } 
+      }, 
+     {
+        path:'/buy',
+        name:"buy",
+        component:Buy,
+        beforeEnter:(to,from,next)=>{
+          store.commit('changeTitle','购票')
           next()
         } 
       } 

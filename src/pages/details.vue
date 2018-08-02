@@ -7,7 +7,6 @@
             <ul class="synopsis-list">
                 <li class="name">
                     <h3 class="CN">{{obj.title}}</h3>
-                    <!-- <span class="EN">{{obj.original_title}}</span> -->
                 </li>
                 <li class="genres-list">类型：
                     <span class="genres">{{obj.genres[0]}}</span>

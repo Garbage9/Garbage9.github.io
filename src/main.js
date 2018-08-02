@@ -14,6 +14,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Qs from 'qs';
 import Home from '../src/pages/home.vue'
 import VueLazyload from 'vue-lazyload'
+import 'jquery'
+import './assets/key'
 
 
 // 导入axios
@@ -45,8 +47,7 @@ Vue.config.productionTip = false
 
 Vue.prototype.HOST = '/api'
 Vue.prototype.$axios = Axios;
-// Axios.defaults.baseURL = 'https://api.douban.com/v2';
-// Axios.defaults.baseURL = 'http://v.juhe.cn/movie/index';
+// Axios.defaults.baseURL = 'http://v.juhe.cn/movie/';
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 //添加请求拦截器
@@ -79,29 +80,8 @@ new Vue({
   components: { App },
   template: '<App/>',
   data:{
-    contentlist: '',
-    urls:{
-      // nowmovie:'movie/in_theaters',
-
-    }
+ 
   },
-  // created() {
-  //   // 跨域请求
-  //   let nowurl = this.HOST + '/movie/in_theaters';
-  //   this.$axios.get(nowurl, {
-  //     params: {
-  //       count: 9,
-  //       page:'1'
-  //     }
-  //   })
-  //   .then(res => {
-  //     this.contentlist = res['data']['subjects']
-
-  //   })
-  //   .catch(error => {
-
-  //   }); 
-  // },
   methods:{
     // get(){
     //   this.$axios.get(this.urls.in_theaters,{

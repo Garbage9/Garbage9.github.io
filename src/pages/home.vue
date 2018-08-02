@@ -60,9 +60,8 @@
         name:'Home',
         data(){
             return {
+                id:'',
                 datas: [],
-                id: '',
-                // val:' ',
                 imgObj: {
                 error: require('../assets/error.jpg'),
                 loading: require('../assets/loading.gif')
@@ -88,7 +87,6 @@
         components:{TabBar,NavigationBar},
         methods:{
             newDetails(event){
-             
                 let index = event.target.dataset.index;
                 let id = this.datas[index].id;
                 console.log(id)
