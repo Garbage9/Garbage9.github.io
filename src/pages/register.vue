@@ -4,7 +4,7 @@
          <div class="content">
               <el-form :model="ruleForm2" status-icon :label-position="labelPosition" :rules="rules2" ref="ruleForm2" size="mini" label-width="100px" class="demo-ruleForm">
                 <el-form-item label="用户名">
-                    <el-input v-model="ruleForm2.name" class="username"></el-input>
+                    <el-input v-model="ruleForm2.name" autofocus="true" class="username"></el-input>
                 </el-form-item>
                 <el-form-item prop="email" label="邮箱" class="email" :rules="[
                 {required: true, message: '请输入邮箱地址', trigger: 'blur' },
@@ -98,7 +98,8 @@
                 this.$refs[formName].validate((valid) => {
                 if (valid) {
                     let that = this.ruleForm2;
-                    let user = new Bmob.User();    
+                    let user = new Bmob.User();   
+                    let _this = this;
                     // 配置用户对象
                     user.set("username", that.name);
                     user.set("password", that.pass);
@@ -106,12 +107,15 @@
                     console.log(that)
                     user.signUp(null,{
                         success:function(user){
+                            let users = user.attributes;
+                            let username = user.attributes.username;    
                             alert("注册成功")
-                            let _this = this;
-                            this.$router.push({
+                            _this.$router.push({
                                 name:'mine',
                                 params:{
-                                    username:username
+                                    users:users,
+                                    username:username,
+                                    isLogin:true
                                 }
                             });
                         },
@@ -125,7 +129,6 @@
                         }
                     })
                     let username = that.name;
-                    console.log(username)
                 } else {
                     alert('error submit!!');
                     return false;

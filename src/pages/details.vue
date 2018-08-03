@@ -47,7 +47,7 @@
                 val:this.$route.params.msg,
                 id:this.$route.params.id,
                 datas:[],
-                obj: {}
+                obj: {},
             }
         },
         mounted(){

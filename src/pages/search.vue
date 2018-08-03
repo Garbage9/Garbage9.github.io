@@ -74,7 +74,6 @@
                 console.log(">>>>")
                     let index = event.target.dataset.index;
                     let id = this.datas[index].id;
-                    
                     this.$router.push({
                         name:"Details",
                         params:{

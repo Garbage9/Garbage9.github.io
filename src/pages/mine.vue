@@ -5,7 +5,7 @@
                 <div class="head">
                     <div class="imgbox"><img src="../assets/2.jpg"></div>
                     <div class="name">
-                    <p class="username">{{username}}</p>
+                    <p class="username">{{userArr[0].username}}</p>
                     </div>
                 </div>
                 <ul class="minelist">
@@ -18,7 +18,7 @@
                     <li>我的收藏<span class="el-icon-arrow-right"></span></li>
                     <li>观影记录<span class="el-icon-arrow-right"></span></li>
                 </ul>
-                <button type="button" class="Login" :key="isLogin" @click="btn">{{isLogin ? '登陆' : '退出登陆'}}</button>
+                <button type="button" class="Login" :key="Login" @click="btn">{{Login ? '退出登陆' : '登陆'}}</button>
             </div>
         <TabBar/>
     </div>
@@ -27,26 +27,39 @@
     import TabBar from '../components/tabbar'
     import NavigationBar from '../components/navigationbar'
     export default{
-        name:'Mine',
+        name:'mine',
         components:{TabBar,NavigationBar},
         data(){
             return {
-                isLogin:'true'
+                Login:this.$route.params.isLogin,
+                user:this.$route.params.users,
+                userArr:[]
             }
         },
         methods:{
             btn(){
-                if(this.isLogin = this.isLogin){
-                    // this.isLogin = !this.isLogin
-                    this.$router.push({
-                    name:'login',
-                    params:{
-                        username:this.$route.params.username
+                let _this = window.localStorage;
+                if(this.Login == true){
+                    localStorage.clear("users");
+                }
+                    console.log(_this.users)
+                     this.$router.push({
+                        name:'login',
+                        params:{
                         }
                     })
-                }
-                
             }
+        },
+        created(){
+            let _this = window.localStorage.users
+            let getUser = JSON.parse(localStorage.getItem("users"));
+            if(getUser == null){
+                this.userArr = [{username:"未登录"}]
+            }else {
+                this.userArr = getUser;
+                this.Login = true            
+            }
+            console.log(getUser)
         }
     }
 </script>
@@ -58,8 +71,8 @@
     background: #eeeeee;
 }
 .head .imgbox {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     overflow: hidden;
     border-radius: 50%;
     margin: 0 auto;
@@ -71,12 +84,9 @@
 .name {
     margin-top: 10px;
 }
-.minelist {
-    margin-top: 10px;
-}
 .minelist li {
     text-align: left;
-    padding: 15px 0 15px 20px;
+    padding: 15px 0 15px 28px;
     border-top: 1px solid #eeeeee;
     position: relative;
 }

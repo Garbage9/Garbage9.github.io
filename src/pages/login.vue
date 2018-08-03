@@ -9,7 +9,7 @@
                 <el-form-item prop="email" label="邮箱" :rules="[
                 {required: true, message: '请输入邮箱地址', trigger: 'blur' },
                 { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change']}]">
-                <el-input v-model="ruleForm2.email"></el-input>
+                <el-input v-model="ruleForm2.email" autofocus="true"></el-input>
                 </el-form-item>
                 <el-form-item label="密码" prop="pass">
                     <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
@@ -18,8 +18,8 @@
                     <el-button type="primary" @click="submitForm('ruleForm2')">登陆</el-button>
                     <el-button @click="resetForm('ruleForm2')">取消</el-button>
                 </el-form-item>
+                <el-button class="goClick" type="text" @click="goClick">没有账号？注册</el-button>
             </el-form>
-            <p class="goClick" @click="goClick">没有账号？注册</p>
          </div>
         <TabBar/>   
     </div>
@@ -51,12 +51,11 @@
               }
             };
             return {
-              username:this.$route.params.username,
               labelPosition:'left',
               ruleForm2: {
                   pass: '',
                   checkPass: '',
-                  email: ''
+                  email: '1234@qq.com'
               },
             rules2: {
               pass: [
@@ -65,7 +64,6 @@
               checkPass: [
                 { validator: validatePass2, trigger: 'blur' }
               ],
-            
           }
         };
       },
@@ -78,17 +76,25 @@
             if (valid) {
               let that = this.ruleForm2;
               let user = new Bmob.User();    
-              console.log(that)
+              // console.log(that)
+              let _this = this;
+              // console.log( this)
               Bmob.User.logIn(that.email,that.pass,{
                 success:function(user){
-                  let _this = this;
-                  let username = user.attributes.username;
-                  alert(`亲爱的${username}登陆成功`)
-                  console.log(username)
-                this.$router.push({
+                let users = user.attributes;
+                console.log(users)
+                let username = user.attributes.username;
+                let userArr = [];
+                userArr.push(users)
+                localStorage.setItem("users",JSON.stringify(userArr));
+                console.log(userArr)
+                alert(`亲爱的${users.username}登陆成功`)
+                _this.$router.push({
                   name:'mine',
                   params:{
-                    username:username
+                    users:users,
+                    username:username,
+                    isLogin:true
                   }
                 });                  
                 },error:function(user,error){
@@ -99,7 +105,6 @@
               alert("请确认密码是否正确！")
               return false;
             }
-        
           })
         },
         removeDomain(item) {
@@ -122,9 +127,7 @@
             }
           })
       }
-
     }
-
     }
 </script>
 <style scoped>

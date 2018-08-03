@@ -1,8 +1,12 @@
 <template>
     <div class="container">      
-        <NavigationBar />
+        <NavigationBar/>
          <div class="content">
-
+             <div class="banner"></div>
+             <div class="movieName">
+                 <h3></h3>
+                 <p class="address">{{obj}}</p>
+             </div>
          </div>
     </div>
 </template>
@@ -15,7 +19,8 @@
             return {
                 id:this.$route.params.id,
                 obj: {},
-                contentlist:[]
+                data:[],
+                contentlist:''
             }
         },
         created(){
@@ -23,15 +28,16 @@
             .then(res => { // 请求成功
                 this.contentlist = res.data.result.data;
                 var _this = this
-                var obj = this.datas.find(function(x){
+                var obj = this.data.find(function(x){
                     return x.id == _this.id
                 })
                 // 对应id的电影的所有数据 这是一个对象
                 this.obj = obj
                 // this.id = res.data.result.data[0].id
-                console.log(this.id);
+                console.log(this.contentlist);
             })
             .catch(error => { // 请求异常
+            console.log(">>")
             });
         },
     }

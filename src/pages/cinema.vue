@@ -13,12 +13,12 @@
                     <div class="address"><span>{{content.address}}</span></div>
                     <div class="tag-list">
                         <p class="tag">
-                            <span>{{content.snack}}</span>
-                            <span>{{content.rebate}}</span>
+                            <el-tag size="mini" type="warning">{{content.snack}}</el-tag>
+                            <el-tag size="mini" type="warning">{{content.rebate}}</el-tag>
                         </p>
                         <p class="tag-cin">
-                            <span>{{content.movieHall}}</span>
-                            <span>{{content.screen}}</span>
+                            <el-tag size="mini">{{content.movieHall}}</el-tag>
+                            <el-tag size="mini">{{content.screen}}</el-tag>
                         </p>
                     </div>
                     <div class="mask"  @click="gobuy" :data-index="index"></div>
@@ -85,7 +85,6 @@
                 })
             }
         },
-     
     }
 </script>
 <style scoped>
@@ -105,9 +104,6 @@
 .imgbox img {
     width: 100%;
     height: 100%;
-}
-.cinema-list {
-
 }
 .cinema-list li {
     padding: 8px 30px 10px;
@@ -143,15 +139,13 @@
 }
 .cinema-list li .tag-list p {
     display: inline-block;
-    font-size: 10px;
-    margin-top: 3px;
 }
-.tag-list .tag span {
+.tag-list .tag .el-tag {
     padding: 2px;
     color: rgb(226, 166, 53);
     border:1px solid rgb(226, 166, 53);
 }
-.tag-list .tag-cin span {
+.tag-list .tag-cin .el-tag {
     padding: 2px;
     color: rgb(94, 157, 230);
     border:1px solid rgb(94, 157, 230);
