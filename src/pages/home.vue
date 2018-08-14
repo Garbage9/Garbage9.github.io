@@ -63,8 +63,8 @@
                 id:'',
                 datas: [],
                 imgObj: {
-                error: require('../assets/error.jpg'),
-                loading: require('../assets/loading.gif')
+                // error: require('../assets/error.jpg'),
+                // loading: require('../assets/loading.gif')
                 }, 
                 contentlist: '',
                 hotlist:'',

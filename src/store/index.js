@@ -12,6 +12,9 @@ export default new Vuex.Store({
     mutations:{
         changeTitle(state,title){
             state.title = title
+        },
+        changeLefe(state,left){
+            state.left = left
         }
     }
 })

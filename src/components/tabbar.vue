@@ -68,7 +68,7 @@ export default {
     height: 49px;
     position: absolute;
     top:0;
-    background: darkcyan;
+    background: rgb(25, 168, 121);
     z-index: 100;  
     transition: all .3s linear;
 }

@@ -134,7 +134,7 @@
     left:0;
 }
 .imgBox {
-    width: 33%;
+    width: 25%;
     vertical-align: top;
 }
 .imgBox img {

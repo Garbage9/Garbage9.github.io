@@ -4,8 +4,8 @@
          <div class="content">
              <div class="banner"></div>
              <div class="movieName">
-                 <h3></h3>
-                 <p class="address">{{obj}}</p>
+                 <h3>{{obj.title}}</h3>
+                 <p class="address">{{obj.address}}</p>
              </div>
          </div>
     </div>
@@ -28,7 +28,7 @@
             .then(res => { // 请求成功
                 this.contentlist = res.data.result.data;
                 var _this = this
-                var obj = this.data.find(function(x){
+                var obj = this.contentlist.find(function(x){
                     return x.id == _this.id
                 })
                 // 对应id的电影的所有数据 这是一个对象

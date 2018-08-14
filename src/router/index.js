@@ -19,6 +19,7 @@ export default new Router({
       component: Home,
       beforeEnter:(to,from,next)=>{
         store.commit('changeTitle','主页')
+        store.commit('changeLefe','0')
         next()
       } 
     },
@@ -28,6 +29,7 @@ export default new Router({
       component: Mine,
       beforeEnter:(to,from,next)=>{
         store.commit('changeTitle','个人中心')
+        store.commit('changeLefe','75%')
         next()
       } 
     },
@@ -37,6 +39,7 @@ export default new Router({
       component: Search,
       beforeEnter:(to,from,next)=>{
         store.commit('changeTitle','搜索')
+        store.commit('changeLefe','25%')
         next()
       } 
     },
@@ -46,6 +49,7 @@ export default new Router({
       component: Cinema,
       beforeEnter:(to,from,next)=>{
         store.commit('changeTitle','影院')
+        store.commit('changeLefe','50%')
         next()
       } 
     },
@@ -54,7 +58,7 @@ export default new Router({
         name:"Details",
         component:Details,
         beforeEnter:(to,from,next)=>{
-          store.commit('changeTitle','详细')
+          store.commit('changeLefe','详细')
           next()
         } 
       }, 

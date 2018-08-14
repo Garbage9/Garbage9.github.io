@@ -30,12 +30,12 @@ Vue.use(iView)
 Vue.use(ElementUI);
 //VueLazyload
 Vue.use(VueLazyload)
-Vue.use(VueLazyload, {
-  preLoad: 1.3,
-  error: 'dist/error.jpg',
-  loading: 'dist/loading.gif',
-  attempt: 1
-})
+// Vue.use(VueLazyload, {
+//   preLoad: 1.3,
+//   error: 'dist/error.jpg',
+//   loading: 'dist/loading.gif',
+//   attempt: 1
+// })
 
 
 
